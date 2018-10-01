@@ -9,7 +9,7 @@ include_recipe 'tar'
 
 #Creating user for zookeeper
 user "zookeeper" do
- password 'zookeeperkafka'
+ password 'USERPASSWORD'
 end
 
 #Creating and updating directory permissions
@@ -25,7 +25,7 @@ end
 
 tar_extract 'http://www-us.apache.org/dist/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz' do
   target_dir '/opt/zookeeper'
-  creates '/opt/zookeeper/zo'
+  creates '/opt/zookeeper/conf'
   tar_flags [ '-P', '--strip-components 1' ]
 end
 
@@ -54,7 +54,7 @@ template '/etc/hosts' do
 end
 
 #Creating Data Directory
-directory '/data1/zookeeper' do
+directory '/var/lib/zookeeper' do
   owner 'zookeeper'
   group 'zookeeper'
   mode '0755'
