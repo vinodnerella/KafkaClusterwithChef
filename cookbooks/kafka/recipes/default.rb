@@ -8,7 +8,7 @@ include_recipe 'tar'
 
 #Cretaing user
 user 'kafka' do
- password "zookeeperkafka"
+ password "USERPASSWORD"
 end
 
 #Downoading package
@@ -36,15 +36,7 @@ end
 
 #Creating log directories
 
-directory '/data1/kafka-logs' do
- owner 'kafka'
- group 'kafka'
- mode '0755'
- action :create
- recursive true
-end
-
-directory '/data2/kafka-logs' do
+directory '/var/log/kafka-logs' do
  owner 'kafka'
  group 'kafka'
  mode '0755'
